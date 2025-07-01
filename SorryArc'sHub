@@ -1,0 +1,649 @@
+open soucre:
+
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
+
+       local Window = MakeWindow({
+         Hub = {
+         Title = "HANN HUB",
+         Animation = "HI"
+         },
+        Key = {
+        KeySystem = false,
+        Title = "Key System",
+        Description = "",
+        KeyLink = "",
+        Keys = {"1234"},
+        Notifi = {
+        Notifications = true,
+        CorrectKey = "Running the Script...",
+       Incorrectkey = "The key is incorrect",
+       CopyKeyLink = "Copied to Clipboard"
+      }
+    }
+  })
+
+       MinimizeButton({
+       Image = "http://www.roblox.com/asset/?id=85280578059890",
+       Size = {60, 60},)
+       Color = Color3.fromRGB(10, 10, 10),
+       Corner = true,
+       Stroke = false,
+       StrokeColor = Color3.fromRGB(255, 0, 0)
+      })
+      
+------ Tab
+     local Tab1o = MakeTab({Name = "Main"})
+     local Tab2o = MakeTab({Name = "Script"})
+     local Tab3o = MakeTab({Name = "Teleport"})
+     local Tab4o = MakeTab({Name = "Boss"})
+     local Tab5o = MakeTab({Name = "Troll"})
+     local Tab6o = MakeTab({Name = "Troll2"})
+     local Tab7o = MakeTab({Name = "Credits"})
+     
+------- BUTTON
+  
+  AddButton(Tab1o, {
+     Name = "Inf skill Hierophant green",
+    Callback = function()
+	  local ScreenGui = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
+ScreenGui.Name = "ShootGui"
+
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0, 150, 0, 50)
+Frame.Position = UDim2.new(0, 200, 0, 200)
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.Active = true
+Frame.Draggable = true
+
+local Button = Instance.new("TextButton", Frame)
+Button.Size = UDim2.new(1, 0, 1, 0)
+Button.Text = "inf skill"
+Button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+Button.TextColor3 = Color3.new(1, 1, 1)
+Button.Font = Enum.Font.SourceSansBold
+Button.TextSize = 20
+
+-- Code khi bấm nút
+Button.MouseButton1Click:Connect(function()
+local args = {
+"Alternate",
+"EmeraldProjectile2",
+false,
+CFrame.new(1579.6800537109375, 594.9044799804688, -260.08489990234375, -0.9977021217346191, -0.04161714017391205, 0.05346548929810524, -3.725290298461914e-09, 0.7891170978546143, 0.6142427921295166, -0.06775356084108353, 0.6128313541412354, -0.7873037457466125)
+}
+
+local Input = game:GetService("ReplicatedStorage"):WaitForChild("Main"):WaitForChild("Input")
+
+for i = 1, 10 do
+Input:FireServer(unpack(args))
+task.wait(0.05) -- delay nhỏ tránh overload
+end
+end)local ScreenGui = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
+ScreenGui.Name = "ShootGui"
+
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0, 150, 0, 50)
+Frame.Position = UDim2.new(0, 200, 0, 200)
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.Active = true
+Frame.Draggable = true
+
+local Button = Instance.new("TextButton", Frame)
+Button.Size = UDim2.new(1, 0, 1, 0)
+Button.Text = "inf skill"
+Button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+Button.TextColor3 = Color3.new(1, 1, 1)
+Button.Font = Enum.Font.SourceSansBold
+Button.TextSize = 20
+
+-- Code khi bấm nút
+Button.MouseButton1Click:Connect(function()
+local args = {
+"Alternate",
+"EmeraldProjectile2",
+false,
+CFrame.new(1579.6800537109375, 594.9044799804688, -260.08489990234375, -0.9977021217346191, -0.04161714017391205, 0.05346548929810524, -3.725290298461914e-09, 0.7891170978546143, 0.6142427921295166, -0.06775356084108353, 0.6128313541412354, -0.7873037457466125)
+}
+
+local Input = game:GetService("ReplicatedStorage"):WaitForChild("Main"):WaitForChild("Input")
+
+for i = 1, 10 do
+Input:FireServer(unpack(args))
+task.wait(0.05) -- delay nhỏ tránh overload
+end
+end)
+  end
+  })
+  
+  AddButton(Tab1o, {
+     Name = "tp void (skill N Twgh,Twv",
+    Callback = function()
+	  local platform = Instance.new("Part")
+platform.Size = Vector3.new(10, 1, 10)
+platform.Position = Vector3.new(1337.16504, 310.623627, -402.127533)
+platform.Anchored = true
+platform.Name = "TeleportPlatform"
+platform.Parent = workspace
+
+-- Khởi tạo GUI
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "TeleportGui"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local UserInputService = game:GetService("UserInputService")
+
+-- Hàm drag hỗ trợ mobile/PC
+local function makeDraggable(frame)
+local dragging, dragInput, dragStart, startPos
+
+local function update(input)  
+	local delta = input.Position - dragStart  
+	frame.Position = UDim2.new(  
+		startPos.X.Scale, startPos.X.Offset + delta.X,  
+		startPos.Y.Scale, startPos.Y.Offset + delta.Y  
+	)  
+end  
+
+frame.InputBegan:Connect(function(input)  
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then  
+		dragging = true  
+		dragStart = input.Position  
+		startPos = frame.Position  
+
+		input.Changed:Connect(function()  
+			if input.UserInputState == Enum.UserInputState.End then  
+				dragging = false  
+			end  
+		end)  
+	end  
+end)  
+
+frame.InputChanged:Connect(function(input)  
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then  
+		dragInput = input  
+	end  
+end)  
+
+UserInputService.InputChanged:Connect(function(input)  
+	if input == dragInput and dragging then  
+		update(input)  
+	end  
+end)
+
+end
+
+-- Tạo nút menu nhỏ góc phải
+local menuButtonFrame = Instance.new("Frame")
+menuButtonFrame.Size = UDim2.new(0, 80, 0, 40)
+menuButtonFrame.Position = UDim2.new(1, -90, 0, 10)
+menuButtonFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+menuButtonFrame.BackgroundTransparency = 0.2
+menuButtonFrame.Active = true
+menuButtonFrame.Parent = gui
+makeDraggable(menuButtonFrame)
+
+local menuButton = Instance.new("TextButton")
+menuButton.Size = UDim2.new(1, 0, 1, 0)
+menuButton.Text = "Menu"
+menuButton.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
+menuButton.TextScaled = true
+menuButton.Parent = menuButtonFrame
+
+-- Tạo Frame chứa menu teleport
+local teleportMenu = Instance.new("Frame")
+teleportMenu.Size = UDim2.new(0, 200, 0, 70)
+teleportMenu.Position = UDim2.new(0.5, -100, 0.6, -35)
+teleportMenu.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+teleportMenu.BackgroundTransparency = 0.2
+teleportMenu.Active = true
+teleportMenu.Visible = false
+teleportMenu.Parent = gui
+makeDraggable(teleportMenu)
+
+-- Nút teleport
+local teleportButton = Instance.new("TextButton")
+teleportButton.Size = UDim2.new(1, 0, 1, 0)
+teleportButton.Text = "Teleport to Platform"
+teleportButton.BackgroundColor3 = Color3.fromRGB(255, 100, 100)
+teleportButton.TextScaled = true
+teleportButton.Parent = teleportMenu
+
+-- Trạng thái teleport
+local teleported = false
+local originalCFrame = nil
+
+teleportButton.MouseButton1Click:Connect(function()
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+if not teleported then  
+	originalCFrame = hrp.CFrame  
+	hrp.CFrame = CFrame.new(platform.Position + Vector3.new(0, 5, 0))  
+	teleportButton.Text = "Return to Original Position"  
+	teleported = true  
+else  
+	if originalCFrame then  
+		hrp.CFrame = originalCFrame  
+	end  
+	teleportButton.Text = "Teleport to Platform"  
+	teleported = false  
+end
+
+end)
+
+-- Toggle ẩn/hiện menu teleport
+menuButton.MouseButton1Click:Connect(function()
+teleportMenu.Visible = not teleportMenu.Visible
+end)
+
+-- ✅ Khi reset nhân vật, GUI sẽ biến mất
+player.CharacterAdded:Connect(function()
+if gui and gui.Parent then
+gui:Destroy()
+end
+end)
+  end
+  })
+  
+  AddButton(Tab1o, {
+     Name = "Auto get item",
+    Callback = function()
+	  local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local root = character:WaitForChild("HumanoidRootPart")
+
+local collectRadius = 5000  
+
+local function collectNearbyItems()  
+    for _, obj in pairs(workspace:GetDescendants()) do  
+        if obj:IsA("BasePart") and (obj.Position - root.Position).Magnitude <= collectRadius then  
+            for _, child in ipairs(obj:GetChildren()) do  
+                if child:IsA("TouchTransmitter") then  
+                    firetouchinterest(root, obj, 0)  
+                    firetouchinterest(root, obj, 1)  
+                end  
+            end  
+        end  
+    end  
+end  
+
+while true do  
+    pcall(collectNearbyItems)  
+    task.wait(0.3)  
+end  
+  end
+  })
+  
+  AddButton(Tab2o, {
+     Name = "Keybind help use skill mobile",
+    Callback = function()
+	  loadstring(game:HttpGet("https://gist.githubusercontent.com/RedZenXYZ/4d80bfd70ee27000660e4bfa7509c667/raw/da903c570249ab3c0c1a74f3467260972c3d87e6/KeyBoard%2520From%2520Ohio%2520Fr%2520Fr"))()
+  end
+  })
+  
+  AddButton(Tab2o, {
+     Name = "Anti afk",
+    Callback = function()
+	  loadstring(game:HttpGet("https://pastebin.com/raw/4m4fLjXR"))()
+  end
+  })
+  
+  AddButton(Tab3o, {
+     Name = "Bank",
+    Callback = function()
+	  local player = game.Players.LocalPlayer
+local root = player.Character:WaitForChild("HumanoidRootPart")
+root.CFrame = CFrame.new(1341.83, 587.62, -554.65)
+  end
+  })
+  
+  AddButton(Tab3o, {
+     Name = "Quest",
+    Callback = function()
+	  local player = game.Players.LocalPlayer
+local root = player.Character:WaitForChild("HumanoidRootPart")
+root.CFrame = CFrame.new(1042.21, 583.26, -446.56)
+  end
+  })
+  
+  AddButton(Tab3o, {
+     Name = "Tim and Timmy",
+    Callback = function()
+	  local player = game.Players.LocalPlayer
+local root = player.Character:WaitForChild("HumanoidRootPart")
+root.CFrame = CFrame.new(1398.24, 584.34, -219.32)
+  end
+  })
+  
+  AddButton(Tab3o, {
+     Name = "Farmland",
+    Callback = function()
+	  local player = game.Players.LocalPlayer
+local root = player.Character:WaitForChild("HumanoidRootPart")
+root.CFrame = CFrame.new(-285.6, 533.99, -1487.94)
+  end
+  })
+  
+  AddButton(Tab3o, {
+     Name = "portal boss",
+    Callback = function()
+	  local player = game.Players.LocalPlayer
+local root = player.Character:WaitForChild("HumanoidRootPart")
+root.CFrame = CFrame.new(1129.44, 584.07, -723.08)
+  end
+  })
+  
+  AddButton(Tab4o, {
+     Name = "Auto boss",
+    Callback = function()
+	  repeat task.wait() until game:IsLoaded()  
+
+pcall(function()  
+    for _, v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do  
+        v:Disable()  
+    end  
+end)  
+
+local Players = game:GetService("Players")  
+local Workspace = game:GetService("Workspace")  
+local LocalPlayer = Players.LocalPlayer  
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()  
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")  
+local Humanoid = Character:WaitForChild("Humanoid")  
+
+local Time = true  
+local Attacking = Workspace:WaitForChild("Dead")  
+local Obby = Workspace:WaitForChild("ObbyW")  
+local Phase = Workspace:WaitForChild("BossPhase")  
+local Health = Workspace:WaitForChild("TrollHealth")  
+
+pcall(function()  
+    if Workspace:FindFirstChild("Effects") then Workspace.Effects:Destroy() end  
+    if Workspace:FindFirstChild("Map") and Workspace.Map:FindFirstChild("ThunderParts") then  
+        Workspace.Map.ThunderParts:Destroy()  
+    end  
+end)  
+
+local function EquipAndResizeSword()  
+    local sword = LocalPlayer.Backpack:FindFirstChild("KnightsSword") or Character:FindFirstChild("KnightsSword")  
+    if sword then  
+        sword.Parent = Character  
+        task.wait(0.1)  
+        pcall(function()  
+            local handle = sword:FindFirstChild("Handle")  
+            if handle then  
+                local box = Instance.new("SelectionBox")  
+                box.Name = "SelectionBoxCreated"  
+                box.Parent = handle  
+                box.Adornee = handle  
+                handle.Massless = true  
+                handle.Size = Vector3.new(20, 20, 500)  
+                sword.GripPos = Vector3.new(0, 0, 0)  
+            end  
+        end)  
+        Humanoid:UnequipTools()  
+        sword.Parent = Character  
+    end  
+end  
+EquipAndResizeSword()  
+
+task.spawn(function()  
+    while task.wait() do  
+        if not Attacking.Value then  
+            if Obby.Value then  
+                HumanoidRootPart.CFrame = CFrame.new(20.456, 113.245, 196.613)  
+            elseif Phase.Value == "None" then  
+                HumanoidRootPart.CFrame = CFrame.new(-5.47, -4.45, 248.21)  
+            else  
+                HumanoidRootPart.CFrame = CFrame.new(-19.89, -4.77, 142.49)  
+            end  
+        end  
+    end  
+end)  
+
+task.spawn(function()  
+    while task.wait() do  
+        if not Attacking.Value and Character:FindFirstChild("KnightsSword") then  
+            Character.KnightsSword:Activate()  
+        end  
+    end  
+end)  
+
+local function Percent(a, b)  
+    return a / b  
+end  
+
+Health:GetPropertyChangedSignal("Value"):Connect(function()  
+    local max = Health:FindFirstChild("MaxHealth") and Health.MaxHealth.Value or 1  
+    if Percent(Health.Value, max) <= 0.003 and Time then  
+        Time = false  
+        Humanoid:UnequipTools()  
+        task.wait(1)  
+        EquipAndResizeSword()  
+    end  
+end)  
+  end
+  })
+  
+  AddButton(Tab4o, {
+     Name = "No cooldown",
+    Callback = function()
+	  loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-no-cooldown-6517"))()
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "no cooldown stand",
+    Callback = function()
+	  loadstring(game:HttpGet("https://raw.githubusercontent.com/hihahahahax/Deadrails/refs/heads/main/Nnn"))()
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "Hitbox Reaper",
+    Callback = function()
+	  pcall(function()
+local _1 = game
+local _2 = _1:GetService("\80\108\97\121\101\114\115")
+local _3 = _1:GetService("\87\111\114\107\115\112\97\99\101")
+local _4 = _2["LocalPlayer"]
+local _5 = _3:FindFirstChild(_4["Name"])
+if _5 and _5:FindFirstChild("\83\116\97\110\100") and _5["Stand"]:FindFirstChild("\72\105\116\98\111\120") then
+_5["Stand"]["Hitbox"]["Size"] = Vector3.new(50, 7.0565185546875, 2.83770751953125)
+else
+warn("Không tìm thấy " .. _4.Name .. ".Stand.Hitbox trong workspace")
+end
+end)
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "inf knife (Shadow The World)",
+    Callback = function()
+	  local args = {
+    [1] = "Alternate";
+    [2] = "ResetKnife";
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Main", 9e9):WaitForChild("Input", 9e9):FireServer(unpack(args))
+
+local args = {
+    [1] = "Alternate";
+    [2] = "Knife";
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Main", 9e9):WaitForChild("Input", 9e9):FireServer(unpack(args))
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "Time stop 15s (need stand have timestop)",
+    Callback = function()
+	  local args = {
+    [1] = 20;
+    [2] = "jotaro4";
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Main", 9e9):WaitForChild("Timestop", 9e9):FireServer(unpack(args))
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "Anti Time stop",
+    Callback = function()
+	  local Namecall
+Namecall = hookmetamethod(game, "__namecall", function(self, ...)
+   if getnamecallmethod() == "FireServer" and tostring(self) == "Anchor" then
+       return
+   end
+   return Namecall(self, ...)
+end)
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "Ice (Shadow TW)",
+    Callback = function()
+	  for i,v in pairs(game.Players:GetPlayers()) do
+if v ~= game.Players.LocalPlayer then
+local args = {
+    [1] = "Damage",
+    [2] = "Freeze",
+[4] = true,
+    [5] = v.Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer(unpack(args))
+local args = {
+    [1] = "Damage",
+    [2] = "BloodSuck",
+[4] = true,
+    [5] = v.Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer(unpack(args))
+end
+end
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "Punch hitbox (Shadow TW)",
+    Callback = function()
+	  for i,v in pairs(game.Players:GetPlayers()) do
+if v ~= game.Players.LocalPlayer then
+local args = {
+    [1] = "Damage",
+    [2] = "Punch",
+[4] = true,
+    [5] = v.Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer(unpack(args))
+local args = {
+    [1] = "Damage",
+    [2] = "",
+[4] = true,
+    [5] = v.Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer(unpack(args))
+end
+end
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "Punch strong (Shadow TW)",
+    Callback = function()
+	  for i,v in pairs(game.Players:GetPlayers()) do
+if v ~= game.Players.LocalPlayer then
+local args = {
+    [1] = "Damage",
+    [2] = "Uppercut",
+[4] = true,
+    [5] = v.Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer(unpack(args))
+local args = {
+    [1] = "Damage",
+    [2] = "",
+[4] = true,
+    [5] = v.Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer(unpack(args))
+end
+end
+  end
+  })
+  
+  AddButton(Tab5o, {
+     Name = "God mode (Crazy Diamond)",
+    Callback = function()
+	  while true do
+local args = {
+    [1] = "Damage",
+    [2] = "Punch",
+    [5] = game:GetService("Players").LocalPlayer.Character.Humanoid,
+    [6] = CFrame.new(1276.9783935546875, 582.9188232421875, -634.36181640625) * CFrame.Angles(0.38053107261657715, 0.7699764966964722, 1.25067138671875),
+    [7] = true
+}
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer(unpack(args))
+local args = {
+    [1] = "Alternate",
+    [2] = "Block"
+}
+
+game:GetService("ReplicatedStorage").Main.Input:FireServer(unpack(args))
+
+wait(.5)
+end
+  end
+  })
+  
+  AddButton(Tab7o, {
+     Name = "Script by VlakS",
+    Callback = function()
+	  
+  end
+  })
+
+AddButton(Tab7o, {
+     Name = "shadow the world function by Mandy",
+    Callback = function()
+
+   end
+})
+
+AddButton(Tab7o, {
+     Name = "Tp void,Inf skill by HzK",
+    Callback = function()
+
+   end
+})
+
+AddButton(Tab7o, {
+     Name = "No cooldown,Anti ts,Ts 15s by Vlaks",
+    Callback = function()
+
+   end
+})
+
+AddButton(Tab7o, {
+     Name = "Teleport and boss by Snow(Snowzinn hub)",
+    Callback = function(
+
+   end
+})
+
+AddButton(Tab7o, {
+     Name = "Arc's Hub the best",
+    Callback = function()
+
+   end
+})
